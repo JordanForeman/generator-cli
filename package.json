@@ -1,0 +1,19 @@
+{
+  "name": "generator-cli",
+  "version": "1.0.0",
+  "description": "A Yeoman Generator for spinning up a serverless REST API",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "app"
+  ],
+  "author": "Jordan Foreman <me@jordanforeman.com>",
+  "license": "ISC",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "4.1.0"
+  }
+}

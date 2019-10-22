@@ -1,0 +1,19 @@
+{
+  "name": "<%= appname %>",
+  "version": "0.0.0",
+  "description": "<%= description %>",
+  "main": "index.js",
+  "bin": {
+    "<%= appname %>": "index.js"
+  },
+  "files": [
+    "index.js",
+    "/src",
+    "/lib"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "<%= author %>",
+  "license": "MIT"
+}
