@@ -1,8 +1,24 @@
 const Generator = require('yeoman-generator');
 
+
+
+function copyTemplateFile(filename) {
+    console.log(`Copying ${filename}`);
+    const source = this.templatePath(filename);
+    const dest = this.destinationPath(`${this.parameters.appName}/${filename}`);
+
+    this.fs.copyTpl(
+        source,
+        dest,
+        this.parameters
+    );
+}
+
 module.exports = class extends Generator {
     constructor(args, opts) {
         super(args, opts);
+
+        this.copyTemplateFile = copyTemplateFile.bind(this);
     }
 
     async prompting() {
@@ -33,20 +49,12 @@ module.exports = class extends Generator {
         };
     }
 
-    writeFile(filename) {
-        this.fs.copyTpl(
-            this.templatePath('filename'),
-            this.destinationPath(filename),
-            { title: 'Copying ' + filename }
-        );
-    }
-
-    end() {
-        this.writeFile('.eslintrc');
-        this.writeFile('.gitignore');
-        this.writeFile('.nvmrc');
-        this.writeFile('index.js');
-        this.writeFile('package.json');
-        this.writeFile('README.md');
+    writing() {
+        this.copyTemplateFile('.eslintrc');
+        this.copyTemplateFile('.gitignore');
+        this.copyTemplateFile('.nvmrc');
+        this.copyTemplateFile('index.js');
+        this.copyTemplateFile('package.json');
+        this.copyTemplateFile('README.md');
     }
 };

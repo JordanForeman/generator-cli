@@ -1,10 +1,10 @@
 {
-  "name": "<%= appname %>",
+  "name": "<%= appName %>",
   "version": "0.0.0",
   "description": "<%= description %>",
   "main": "index.js",
   "bin": {
-    "<%= appname %>": "index.js"
+    "<%= appName %>": "index.js"
   },
   "files": [
     "index.js",

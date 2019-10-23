@@ -20,7 +20,7 @@ function main () {
         }
 
         console.log('Hello ' + result[USERNAME]);
-        console.log('This is <%= appname %>');
+        console.log('This is <%= appName %>');
         process.exit(0);
     });
 }
