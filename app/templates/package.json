@@ -15,5 +15,8 @@
     "test": "mocha"
   },
   "author": "<%= author %>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "prompt": "1.0.0"
+  }
 }
