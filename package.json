@@ -1,19 +1,32 @@
 {
-  "name": "generator-cli",
-  "version": "1.0.0",
-  "description": "A Yeoman Generator for spinning up a serverless REST API",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "@jordanforeman/generator-cli",
+  "version": "0.0.0",
+  "description": "A Yeoman Generator for Command Line Interfaces",
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/JordanForeman/generator-cli.git"
   },
   "files": [
     "app"
   ],
   "author": "Jordan Foreman <me@jordanforeman.com>",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "yeoman",
+    "cli"
   ],
   "dependencies": {
     "yeoman-generator": "4.1.0"
+  },
+  "devDependencies": {
+    "@jordanforeman/commitlint-config": "0.2.1",
+    "@jordanforeman/release-config": "0.2.1",
+    "@jordanforeman/renovate-config": "0.2.1",
+    "husky": "3.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

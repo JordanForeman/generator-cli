@@ -1,17 +1,17 @@
 const Generator = require('yeoman-generator');
+const questions = require('./config/inputs');
+const files = require('./config/manifest');
 
-
+function copyTemplateFileTo(srcFilename, destFilename) {
+    this.fs.copyTpl(
+        this.templatePath(srcFilename),
+        this.destinationPath(destFilename),
+        this.configuration
+    );
+}
 
 function copyTemplateFile(filename) {
-    console.log(`Copying ${filename}`);
-    const source = this.templatePath(filename);
-    const dest = this.destinationPath(`${this.parameters.appName}/${filename}`);
-
-    this.fs.copyTpl(
-        source,
-        dest,
-        this.parameters
-    );
+    this.copyTemplateFileTo(filename, filename);
 }
 
 module.exports = class extends Generator {
@@ -19,42 +19,20 @@ module.exports = class extends Generator {
         super(args, opts);
 
         this.copyTemplateFile = copyTemplateFile.bind(this);
+        this.copyTemplateFileTo = copyTemplateFileTo.bind(this);
     }
 
     async prompting() {
-        const answers = await this.prompt([
-            {
-                type: 'input',
-                name: 'appName',
-                message: 'What is the name of your CLI? (This will be the root command)'
-            },
-            {
-                type: 'input',
-                name: 'description',
-                message: 'Describe your CLI'
-            },
-            {
-                type: 'input',
-                name: 'author',
-                message: 'What is your name?'
-            }
-        ]);
-
-        this.log('app name', answers.appName);
-        this.log('description', answers.description);
-
-        this.parameters = {
-            ...this.parameters,
-            ...answers
-        };
+        this.configuration = await this.prompt(questions);
+        this.destinationRoot(this.configuration.appName);
     }
 
     writing() {
-        this.copyTemplateFile('.eslintrc');
-        this.copyTemplateFile('.gitignore');
-        this.copyTemplateFile('.nvmrc');
-        this.copyTemplateFile('index.js');
-        this.copyTemplateFile('package.json');
-        this.copyTemplateFile('README.md');
+        files.forEach(this.copyTemplateFile);
+        this.copyTemplateFileTo('_gitignore', '.gitignore');
+    }
+
+    install() {
+        this.npmInstall();
     }
 };

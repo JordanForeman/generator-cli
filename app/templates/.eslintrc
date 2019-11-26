@@ -1,0 +1,6 @@
+{
+    "extends": "@jordanforeman/eslint-config",
+    "rules": {
+        "no-console": [0]
+    }
+}
