@@ -1,6 +1,6 @@
 {
   "name": "@jordanforeman/generator-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Yeoman Generator for Command Line Interfaces",
   "main": "app/index.js",
   "repository": {
