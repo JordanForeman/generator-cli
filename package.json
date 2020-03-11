@@ -18,7 +18,7 @@
     "cli"
   ],
   "dependencies": {
-    "yeoman-generator": "4.7.0"
+    "yeoman-generator": "4.7.1"
   },
   "devDependencies": {
     "@jordanforeman/commitizen-config": "1.2.3",
